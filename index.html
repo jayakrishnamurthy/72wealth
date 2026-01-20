@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>72Wealth | Mutual Fund Distributor & Financial Advisor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1A237E;
+            --red: #D32F2F;
+            --bg-light: #F8FAFC;
+            --text-main: #334155;
+            --white: #ffffff;
+            --nav-height: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body { 
+            /* Your Specific Modern Fintech Radial Gradient - Applied Globally */
+            background: radial-gradient(at 0% 0%, rgba(26,35,126,0.8) 0, transparent 50%),
+                        radial-gradient(at 50% 0%, rgba(227,30,36,0.4) 0, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(26,35,126,0.8) 0, transparent 50%),
+                        var(--bg-light);
+            background-attachment: fixed; /* Keeps the gradient seamless across all sections */
+            color: var(--text-main); 
+            line-height: 1.6; 
+            scroll-behavior: smooth; 
+        }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; 
+            background: rgba(248, 250, 252, 0.4); 
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+            height: var(--nav-height);
+        }
+        .logo img { height: 65px; transition: transform 0.3s; }
+        .logo img:hover { transform: scale(1.05); }
+
+        .nav-links { display: flex; list-style: none; gap: 40px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--blue); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--red); }
+
+        .login-btn {
+            background: var(--blue); color: #fff !important;
+            padding: 10px 24px; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        /* Full Screen Section Logic */
+        section { 
+            min-height: calc(100vh - var(--nav-height));
+            padding: 40px 8%; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-margin-top: var(--nav-height);
+            position: relative;
+        }
+
+        h2 { 
+            color: var(--blue); 
+            text-align: center; 
+            font-size: 2.4rem; 
+            font-weight: 700; 
+            margin-bottom: 30px; 
+            position: relative; 
+        }
+        h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--red); margin: 12px auto 0; border-radius: 2px; }
+
+        /* Transparent Glassmorphism Cards to show the global background */
+        .about-card, .calc-box, .card {
+            background: rgba(255, 255, 255, 0.55); 
+            backdrop-filter: blur(12px);
+            padding: 45px; border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; color: var(--blue); margin-bottom: 25px; text-align: center; font-weight: 700; }
+        
+        /* Updated subtext formatting: Centered, Comma, and Line Break */
+        .hero p { 
+            font-size: 1.2rem; 
+            max-width: 800px; 
+            margin: 0 auto 40px; 
+            font-weight: 500; 
+            text-align: center;
+            white-space: pre-line;
+            color: var(--text-main);
+        }
+
+        /* Animated Scroll Arrow */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-10px);}
+            60% {transform: translateX(-50%) translateY(-5px);}
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%; }
+        .card { padding: 35px; }
+        .card h3 { color: var(--blue); margin-bottom: 15px; font-size: 1.3rem; }
+
+        .calc-input {
+            width: 100%; padding: 15px; margin: 10px 0 20px;
+            border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; 
+            font-size: 1rem; background: rgba(255,255,255,0.9);
+        }
+        .calc-btn {
+            width: 100%; background: var(--blue); color: white; border: none;
+            padding: 18px; font-weight: 700; cursor: pointer; border-radius: 12px;
+            text-transform: uppercase; transition: 0.3s;
+        }
+        .calc-btn:hover { background: var(--red); transform: translateY(-2px); }
+
+        footer { background: var(--blue); color: white; text-align: center; padding: 40px; font-size: 0.95rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.6rem; }
+            .nav-links { display: none; }
+            section { padding: 30px 5%; }
+            .scroll-down { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <img src="logowithoutbg.png" alt="72Wealth Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculators">Calculators</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://wealth.72wealth.com/login/investor" class="login-btn">Investor Login</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="hero">
+    <div style="margin-bottom: 30px;">
+        <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="#E31E24" stroke-width="1.5">
+            <path d="M12 20V10M18 20V4M6 20v-4"></path>
+        </svg>
+    </div>
+    <h1>Expert Mentorship.<br>Exponential Growth.</h1>
+    <p>At 72Wealth, we don't just distribute funds,
+    we mentor you through the journey of compounding your legacy.</p>
+    <a href="#contact" class="login-btn" style="padding: 18px 50px; font-size: 1.1rem;">Start Your Journey</a>
+    
+    <a href="#about" class="scroll-down">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
+    </a>
+</section>
+
+<section id="about">
+    <div class="about-card">
+        <h2>Our Story</h2>
+        <p>At <strong>72Wealth</strong>, our name is inspired by the mathematical 'Rule of 72'. We believe wealth isn't just about numbers; it's about the security and freedom those numbers provide. With 15 years of technical and financial insight, we simplify the investment landscape for you.</p>
+        <div style="margin-top: 35px; padding: 30px; border-left: 5px solid var(--red); background: rgba(211, 47, 47, 0.05); border-radius: 15px; font-style: italic;">
+            To democratize professional wealth management by making complex financial strategies accessible, transparent, and rewarding for every Indian household.
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <h2>What We Offer</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Mutual Funds</h3>
+            <p>Curated selections of Equity, Debt, and Hybrid funds tailored to your risk appetite.</p>
+        </div>
+        <div class="card">
+            <h3>Retirement Planning</h3>
+            <p>Strategic corpus building to ensure your lifestyle remains uninterrupted in your golden years.</p>
+        </div>
+        <div class="card">
+            <h3>Goal-Based SIPs</h3>
+            <p>Specific planning for child education, home buying, and other major life milestones.</p>
+        </div>
+    </div>
+</section>
+
+<section id="calculators">
+    <h2>SIP Calculator</h2>
+    <div class="calc-box" style="max-width: 550px;">
+        <div style="display: flex; gap: 20px; text-align: left;">
+            <div style="flex: 1;">
+                <label style="font-size: 0.9rem; font-weight: 600;">Monthly (₹)</label>
+                <input type="number" id="monthly" class="calc-input" value="10000">
+            </div>
+            <div style="flex: 1;">
+                <label style="font-size: 0.9rem; font-weight: 600;">Returns (% p.a.)</label>
+                <input type="number" id="rate" class="calc-input" value="12">
+            </div>
+        </div>
+        <label style="font-size: 0.9rem; font-weight: 600; display: block; text-align: left;">Tenure (Years)</label>
+        <input type="number" id="years" class="calc-input" value="15">
+        <button class="calc-btn" onclick="calcSIP()">Calculate Future Wealth</button>
+        <div id="sipResult" style="margin-top: 30px; font-size: 2.2rem; font-weight: 700; color: var(--blue);">₹ 50,45,760</div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Connect With Us</h2>
+    <div class="calc-box" style="max-width: 550px; padding: 45px;">
+        <form id="mentorship-form">
+            <input type="text" class="calc-input" placeholder="Full Name" required>
+            <input type="email" class="calc-input" placeholder="Email Address" required>
+            <select class="calc-input">
+                <option>SIP Planning & Compounding</option>
+                <option>Retirement Wealth Growth</option>
+                <option>Portfolio Review</option>
+            </select>
+            <textarea class="calc-input" rows="4" placeholder="How can we mentor your wealth journey?"></textarea>
+            <button type="submit" class="calc-btn">Send Inquiry</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 72Wealth. Your Partner in Compounding Wealth.</p>
+</footer>
+
+<script>
+    function calcSIP() {
+        let P = document.getElementById('monthly').value;
+        let r = (document.getElementById('rate').value / 100) / 12;
+        let n = document.getElementById('years').value * 12;
+        let FV = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+        document.getElementById('sipResult').innerHTML = "₹ " + Math.round(FV).toLocaleString('en-IN');
+    }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        // Replace with your actual Public Key
+        emailjs.init("-CmN86WyiA5zQ8-mL");
+    })();
+
+    document.getElementById('mentorship-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const btn = document.getElementById('submit-button');
+        btn.innerText = 'Sending...';
+
+        // Replace with your actual Service ID and Template ID
+        emailjs.sendForm('service_8i06rjp', 'template_wh9zbmq', this)
+        .then(function() {
+            alert('Inquiry Sent Successfully!');
+            btn.innerText = 'Send Inquiry';
+            document.getElementById('mentorship-form').reset();
+        }, function(error) {
+            alert('FAILED to send message. Please try again.');
+            btn.innerText = 'Send Inquiry';
+            console.log('FAILED...', error);
+        });
+    });
+</script>
+
+</body>
+</html>
