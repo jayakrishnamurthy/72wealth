@@ -229,20 +229,16 @@
     <h2>Connect With Us</h2>
     <div class="calc-box" style="max-width: 550px; padding: 45px;">
         <form id="mentorship-form">
-    <input type="text" name="user_name" class="calc-input" placeholder="Full Name" required>
-    
-    <input type="email" name="user_email" class="calc-input" placeholder="Email Address" required>
-    
-    <select name="mentorship_type" class="calc-input">
-        <option value="SIP Planning">SIP Planning & Compounding</option>
-        <option value="Retirement">Retirement Wealth Growth</option>
-        <option value="Portfolio Review">Portfolio Review</option>
-    </select>
-    
-    <textarea name="message" class="calc-input" rows="4" placeholder="How can we mentor your wealth journey?"></textarea>
-    
-    <button type="submit" class="calc-btn" id="submit-button">Send Inquiry</button>
-</form>
+            <input type="text" name="user_name" class="calc-input" placeholder="Full Name" required>
+            <input type="email" name="user_email" class="calc-input" placeholder="Email Address" required>
+            <select name="mentorship_type" class="calc-input">
+                <option value="SIP Planning">SIP Planning & Compounding</option>
+                <option value="Retirement">Retirement Wealth Growth</option>
+                <option value="Portfolio Review">Portfolio Review</option>
+            </select>
+            <textarea name="message" class="calc-input" rows="4" placeholder="How can we mentor your wealth journey?"></textarea>
+            <button type="submit" class="calc-btn" id="submit-button">Send Inquiry</button>
+        </form>
     </div>
 </section>
 
@@ -262,7 +258,6 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
     (function(){
-        // Replace with your actual Public Key
         emailjs.init("-CmN86WyiA5zQ8-mL");
     })();
 
@@ -271,16 +266,13 @@
         const btn = document.getElementById('submit-button');
         btn.innerText = 'Sending...';
 
-        // Replace with your actual Service ID and Template ID
         emailjs.sendForm('service_8i06rjp', 'template_wh9zbmq', this)
         .then(function() {
-            alert('Inquiry Sent Successfully!');
-            btn.innerText = 'Send Inquiry';
-            document.getElementById('mentorship-form').reset();
+            // Redirect to the new thank you page after successful send
+            window.location.href = "thank_you.html";
         }, function(error) {
-            alert('FAILED to send message. Please try again.');
+            alert('FAILED to send message: ' + JSON.stringify(error));
             btn.innerText = 'Send Inquiry';
-            console.log('FAILED...', error);
         });
     });
 </script>
@@ -288,4 +280,5 @@
 </body>
 
 </html>
+
 
