@@ -898,6 +898,11 @@ img { max-width: 100%; height: auto; }
 </footer>
 
 <script>
+	
+	function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+		
    function calcSIP() {
     let P = document.getElementById('monthly').value;
     let r = (document.getElementById('rate').value / 100) / 12;
@@ -947,13 +952,9 @@ function resetSIP() {
         });
     });
 </script>
-<script>
-	function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
-}
-</script>
+
 </body>
 </html>
+
 
 
