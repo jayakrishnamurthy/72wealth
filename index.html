@@ -13,7 +13,7 @@
             --bg-light: #F6F8FB;
             --text-main: #334155;
             --white: #ffffff;
-            --nav-height: 70px;
+            --nav-height: 75px;
             --section-py: 48px;
             --radius-lg: 18px;
             --shadow-soft: 0 4px 20px rgba(0,0,0,0.05);
@@ -22,126 +22,111 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background: var(--bg-light); color: var(--text-main); line-height: 1.55; scroll-behavior: smooth; }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION: STRAIGHT LINE FIX --- */
         nav {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; /* This is the "magic" line that aligns everything vertically */
-    padding: 0 6.5%; 
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(14px); 
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    position: sticky; 
-    top: 0; 
-    z-index: 1000; 
-    height: var(--nav-height); /* Ensure this height is consistent */
-}
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; /* Vertically aligns logo and links */
+            padding: 0 6.5%; 
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(14px); 
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            height: var(--nav-height);
+        }
+        .logo img { height: 48px; display: block; }
 
-.logo {
-    display: flex;
-    align-items: center; /* Centers the logo within its container */
-}
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+            gap: 20px; 
+            align-items: center; 
+            margin: 0; 
+            padding: 0;
+        }
 
-.logo img { 
-    height: 45px; /* Slightly reduced height to ensure it fits the nav-height comfortably */
-    width: auto;
-    display: block;
-}
+        /* --- DROPDOWN: "OPEN HERE" FIX --- */
+        .nav-links li { 
+            position: relative; /* Forces dropdown to anchor to this link */
+        }
 
-.nav-links { 
-    display: flex; 
-    list-style: none; 
-    gap: 20px; /* Increased gap for a cleaner, horizontal look */
-    align-items: center; /* Ensures text links align with the center of the logo */
-    margin: 0;
-    padding: 0;
-}
-        
-        .nav-links a { text-decoration: none; color: var(--blue); font-weight: 600; font-size: 0.9rem; transition: 0.25s; padding: 9px 6px; }
-        .nav-links a:hover { color: var(--red) !important; text-decoration: underline; text-underline-offset: 8px; }
-        
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--blue); 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            transition: 0.25s; 
+            padding: 10px 5px; 
+            display: block;
+        }
+        .nav-links a:hover { color: var(--red) !important; }
+
+        .dropdown-menu {
+            display: none; 
+            position: absolute; 
+            top: 100%;       /* Directly below the 'About Us' link */
+            left: 0;         /* Aligned with the left of the 'About Us' text */
+            background: white;
+            min-width: 200px; 
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 1001;
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { padding: 10px 20px; font-weight: 500; }
+        .dropdown-menu a:hover { background: var(--bg-light); color: var(--red); text-decoration: none; }
+
+        /* --- MOBILE MENU FIX --- */
         .menu-icon { display: none; font-size: 1.8rem; color: var(--blue); cursor: pointer; }
 
-        /* --- MOBILE NAV LOGIC (Fixes the "Vanishing" Menu) --- */
         @media (max-width: 1024px) {
-            .menu-icon { display: block; z-index: 1001; }
+            .menu-icon { display: block; z-index: 1002; }
             .nav-links {
                 position: fixed; top: 0; left: -100%; 
                 flex-direction: column; background: white;
                 width: 80%; height: 100vh; gap: 0;
-                transition: 0.4s ease; z-index: 1000;
+                transition: 0.4s ease; z-index: 1001;
                 padding-top: 80px; box-shadow: 5px 0 15px rgba(0,0,0,0.2);
-                display: flex !important; /* Ensures it never uses display: none */
+                display: flex !important;
             }
             .nav-links.active { left: 0; }
-            .nav-links li { position: relative; /* This is the most important line */
-}
-                .nav-links a { display: block; padding: 20px; width: 100%; }
-            
-            /* Indent dropdown items on mobile */
-           
-.dropdown-menu {    display: none;     position: absolute;     top: 100%;       /* Directly below the link */
-                    left: 0;         /* Aligns with the left edge of the 'About Us' link */
-                    min-width: 200px; 
-                background: white;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    padding: 10px 0;
-    z-index: 1001;
-}
-            .dropdown:hover .dropdown-menu { 
-    display: block; 
-}
-        /* --- HERO SECTION (Fixes "Peeking" on Mac) --- */
+            .nav-links li { width: 100%; border-bottom: 1px solid #eee; }
+            .dropdown-menu { position: static; display: block; background: #f9f9f9; padding-left: 20px; box-shadow: none; width: 100%; }
+        }
+
+        /* --- HERO: FULL SCREEN FIX --- */
         .hero {
-            position: relative; 
-            min-height: 100vh; /* Forces full-screen arrival */
+            position: relative; min-height: 100vh; /* Fills screen on arrival */
             display: grid; place-items: center; text-align: center; color: var(--white);
             padding: 44px 6.5%; overflow: hidden; background: var(--blue);
         }
         .hero-carousel { position: absolute; inset: 0; z-index: 0; }
         .hero-track { display: flex; height: 100%; animation: hero-scroll 42s linear infinite; }
         .hero-track img { height: 100%; width: 110vw; object-fit: cover; filter: brightness(0.5); }
-        
         .hero::after {
             content: ""; position: absolute; inset: 0;
-            background: radial-gradient(1200px 600px at 50% 15%, rgba(255,255,255,0.06), transparent 40%),
-                        linear-gradient(0deg, rgba(26, 35, 126, 0.45), rgba(26, 35, 126, 0.25));
+            background: linear-gradient(0deg, rgba(26,35,126,0.45), rgba(26,35,126,0.25));
             z-index: 1;
         }
-
         .hero-content { position: relative; z-index: 2; max-width: 950px; }
         .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.2rem); text-shadow: 0 4px 20px rgba(0,0,0,0.8); margin-bottom: 15px; }
-        .hero p { font-size: clamp(1rem, 1.35vw, 1.2rem); max-width: 800px; margin: 0 auto 22px; opacity: 0.96; }
 
-        /* --- CONTENT & RESPONSIVE GRIDS --- */
+        /* --- CONTENT GRIDS --- */
         section { padding: var(--section-py) 6.5%; scroll-margin-top: var(--nav-height); }
         .content-card { background: white; padding: 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); max-width: 1120px; margin: 0 auto 28px; }
         
         @media (max-width: 768px) {
             section { padding: 40px 15px; }
-            #contact .content-card > div { 
-                grid-template-columns: 1fr !important; /* Stacks contact info and form vertically */
-            }
+            #contact .content-card > div { grid-template-columns: 1fr !important; }
             .text-list.split-2 { columns: 1 !important; }
         }
 
-        /* Global UI Elements */
         .login-btn { background: var(--blue); color: #fff !important; padding: 12px 24px; border-radius: 40px; font-weight: 600; text-decoration: none; display: inline-block; }
-        h2 { color: var(--blue); text-align: center; margin-bottom: 26px; font-weight: 700; font-size: clamp(1.6rem, 2.1vw, 2.1rem); }
-        h2::after { content: ''; display: block; width: 48px; height: 4px; background: var(--red); margin: 10px auto 0; border-radius: 2px; }
-        
-        .calc-input { width: 100%; padding: 14px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem; }
-        .calc-btn { width: 100%; background: var(--blue); color: white; padding: 16px; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
-        
         footer { background: var(--blue); color: white; text-align: center; padding: 36px 6.5%; }
         @keyframes hero-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* Dropdown Desktop Hover */
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; min-width: 220px; box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-radius: 10px; padding: 10px 0; }
-        .dropdown-menu a { display: block; padding: 10px 16px; color: var(--text-main); font-weight: 500; }
-        .dropdown-menu a:hover { background: var(--bg-light); color: var(--red); }
     </style>
 </head>
 <body>
@@ -150,36 +135,34 @@
     <div class="logo"><img src="logowithoutbg.png" alt="72Wealth Logo"></div>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <ul class="nav-links" id="navLinks">
-        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li class="dropdown">
             <a href="javascript:void(0)">About Us ▾</a>
             <ul class="dropdown-menu">
-                <li><a href="#about-story" onclick="toggleMenu()">Our Story</a></li>
-                <li><a href="#about-team" onclick="toggleMenu()">Our Team</a></li>
-                <li><a href="#about-why" onclick="toggleMenu()">Why 72Wealth</a></li>
+                <li><a href="#about-story">Our Story</a></li>
+                <li><a href="#about-team">Our Team</a></li>
+                <li><a href="#about-why">Why 72Wealth</a></li>
             </ul>
         </li>
-        <li><a href="#products" onclick="toggleMenu()">Products</a></li>
-        <li><a href="#services" onclick="toggleMenu()">Services</a></li>
-        <li><a href="#calculators" onclick="toggleMenu()">Calculators</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculators">Calculators</a></li>
         <li><a href="knowledge.html" target="_blank">Knowledge Corner</a></li>
-        <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact Us</a></li>
         <li><a href="https://wealth.72wealth.com/login/investor" class="login-btn" target="_blank">Login</a></li>
     </ul>
 </nav>
 
 <section id="home" class="hero">
-    <div class="hero-carousel">
-        <div class="hero-track">
-            <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2080&auto=format&fit=crop" alt="">
-            <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=2080&auto=format&fit=crop" alt="">
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2080&auto=format&fit=crop" alt="">
-            <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2080&auto=format&fit=crop" alt="">
-            <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=2080&auto=format&fit=crop" alt="">
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2080&auto=format&fit=crop" alt="">
-        </div>
-    </div>
+    <div class="hero-carousel"><div class="hero-track">
+        <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2080&auto=format&fit=crop" alt="">
+        <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=2080&auto=format&fit=crop" alt="">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2080&auto=format&fit=crop" alt="">
+        <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2080&auto=format&fit=crop" alt="">
+        <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=2080&auto=format&fit=crop" alt="">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2080&auto=format&fit=crop" alt="">
+    </div></div>
     <div class="hero-content">
         <h1>Expert Mentorship.<br>Exponential Growth.</h1>
         <p>At <b>72Wealth</b>, we don't just distribute funds, we mentor you through the journey of compounding your legacy.</p>
@@ -188,11 +171,21 @@
 </section>
 
 <script>
-    /* --- MOBILE MENU LOGIC --- */
+    /* --- MOBILE MENU & NAVIGATION FIX --- */
     function toggleMenu() {
         const navLinks = document.getElementById('navLinks');
         navLinks.classList.toggle('active');
     }
+
+    // This closes the menu automatically when you click a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    });
 
     /* --- CALCULATOR LOGIC --- */
     function calcSIP() {
@@ -206,18 +199,14 @@
         }
     }
 
-    /* --- EMAILJS INTEGRATION --- */
+    /* --- EMAILJS --- */
     (function(){ emailjs.init("-CmN86WyiA5zQ8-mL"); })();
     document.getElementById('mentorship-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const btn = document.getElementById('submit-button');
-        btn.innerText = 'Sending...';
-        emailjs.sendForm('service_8i06rjp', 'template_wh9zbmq', this)
-        .then(() => { window.location.href = "thank_you.html"; }, 
-        (error) => { alert('Error: ' + JSON.stringify(error)); btn.innerText = 'Send Inquiry'; });
+        emailjs.sendForm('service_8i06rjp', 'template_wh9zbmq', this).then(() => {
+            window.location.href = "thank_you.html";
+        });
     });
 </script>
 </body>
 </html>
-
-
