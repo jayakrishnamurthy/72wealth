@@ -24,13 +24,39 @@
 
         /* --- NAVIGATION --- */
         nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 6.5%; background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(14px); border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000; height: var(--nav-height);
-        }
-        .logo img { height: 52px; }
-        .nav-links { display: flex; list-style: none; gap: 14px; align-items: center; }
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* This is the "magic" line that aligns everything vertically */
+    padding: 0 6.5%; 
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(14px); 
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    height: var(--nav-height); /* Ensure this height is consistent */
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* Centers the logo within its container */
+}
+
+.logo img { 
+    height: 45px; /* Slightly reduced height to ensure it fits the nav-height comfortably */
+    width: auto;
+    display: block;
+}
+
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 20px; /* Increased gap for a cleaner, horizontal look */
+    align-items: center; /* Ensures text links align with the center of the logo */
+    margin: 0;
+    padding: 0;
+}
+        
         .nav-links a { text-decoration: none; color: var(--blue); font-weight: 600; font-size: 0.9rem; transition: 0.25s; padding: 9px 6px; }
         .nav-links a:hover { color: var(--red) !important; text-decoration: underline; text-underline-offset: 8px; }
         
@@ -182,3 +208,4 @@
 </script>
 </body>
 </html>
+
