@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>72Wealth | Mutual Fund Distributor & Financial Advisor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <title>72Wealth | Mutual Fund Distributor & Financial Advisor</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
@@ -56,6 +55,7 @@
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         overflow-y: auto;
         padding-bottom: 40px;
+        z-index: 1001; /* Ensure it stays above content */
     }
 
     .nav-links.active { left: 0; }
@@ -190,7 +190,7 @@ img { max-width: 100%; height: auto; }
         /* ---------- HERO with horizontal image scroller ---------- */
         .hero {
             position: relative;
-            min-height: 78vh;                 /* shorter to reduce overall scroll */
+            min-height: 100vh;                 /* Fills entire screen on high-res displays like Mac */
             display: grid; place-items: center;
             text-align: center; color: var(--white);
             padding: 44px 6.5%;
@@ -256,11 +256,13 @@ img { max-width: 100%; height: auto; }
         }
 
         /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 1024px) { .nav-links { display: none; } }
+        @media (max-width: 1024px) { 
+            .nav-links { display: flex; } /* Ensure flex is used for the hidden menu logic */
+        }
         @media (max-width: 768px) {
             :root { --section-py: 36px; }
             .content-card { padding: 18px; }
-            .hero { min-height: 70vh; }
+            .hero { min-height: 100vh; } /* Ensure full screen on mobile too */
             .logo img { height: 46px; }
         }
 
@@ -320,6 +322,28 @@ img { max-width: 100%; height: auto; }
         color: var(--blue);
     }
 }
+		/* Tablet and Mobile Styles */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: flex; /* Changed from none to maintain container flow */
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem; /* Shrink headers for mobile */
+    }
+
+    #home {
+        padding: 60px 20px; /* Add space for mobile headers */
+    }
+}
+
+/* Large Screens (Mac/Desktop) */
+@media screen and (min-width: 1200px) {
+    .content-wrapper {
+        width: 1140px;
+        margin: 0 auto;
+    }
+}
     </style>
 </head>
 <body>
@@ -330,33 +354,30 @@ img { max-width: 100%; height: auto; }
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
     <ul class="nav-links" id="navLinks">
-        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li class="dropdown">
             <a href="javascript:void(0)">About Us ▾</a>
             <ul class="dropdown-menu">
-                <li><a href="#about-story" onclick="toggleMenu()">Our Story</a></li>
-                <li><a href="#about-team" onclick="toggleMenu()">Our Team</a></li>
-                <li><a href="#about-why" onclick="toggleMenu()">Why 72Wealth</a></li>
+                <li><a href="#about-story">Our Story</a></li>
+                <li><a href="#about-team">Our Team</a></li>
+                <li><a href="#about-why">Why 72Wealth</a></li>
             </ul>
         </li>
-        <li><a href="#products" onclick="toggleMenu()">Products</a></li>
-        <li><a href="#services" onclick="toggleMenu()">Services</a></li>
-        <li><a href="#calculators" onclick="toggleMenu()">Calculators</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculators">Calculators</a></li>
         <li><a href="knowledge.html" target=_blank>Knowledge Corner</a></li>
-        <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact Us</a></li>
         <li><a href="https://wealth.72wealth.com/login/investor" class="login-btn" target=_blank>Login</a></li>
     </ul>
 </nav>
-<!-- HERO with horizontally scrolling images behind the text -->
 <section id="home" class="hero">
     <div class="hero-carousel" aria-hidden="true">
         <div class="hero-track">
-            <!-- Replace these three with your curated images (finance/mentorship theme) -->
             <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2080&auto=format&fit=crop" alt="">
             <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=2080&auto=format&fit=crop" alt="">
             <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2080&auto=format&fit=crop" alt="">
-            <!-- Duplicate sequence for seamless loop -->
             <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=2080&auto=format&fit=crop" alt="">
             <img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=2080&auto=format&fit=crop" alt="">
             <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2080&auto=format&fit=crop" alt="">
@@ -375,7 +396,6 @@ img { max-width: 100%; height: auto; }
 
     <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px;">
 
-        <!-- Our Story -->
         <div style="
             background: white;
             padding: 24px 28px;
@@ -397,7 +417,6 @@ img { max-width: 100%; height: auto; }
             </p>
         </div>
 
-        <!-- Mission -->
         <div style="
             background: white;
             padding: 24px 28px;
@@ -412,7 +431,6 @@ img { max-width: 100%; height: auto; }
             </p>
         </div>
 
-        <!-- Vision -->
         <div style="
             background: white;
             padding: 24px 28px;
@@ -766,7 +784,7 @@ img { max-width: 100%; height: auto; }
         <h4 style="margin-top: 5px;">At 72Wealth, our investment philosophy rests on several foundational principles:</h4>
 <br>
         <ul class="text-list">
-            <li><p><strong>Client-Centric Approach:</strong> Every recommendation is structured around your specific financial situation, objectives, and constraints—not around market trends or available products.</p>
+            <li><p><strong>Client-Cent Approach:</strong> Every recommendation is structured around your specific financial situation, objectives, and constraints—not around market trends or available products.</p>
 </li>
             <li><p><strong>Research-Driven Analysis:</strong> We employ systematic evaluation frameworks that combine quantitative metrics (risk-adjusted returns, downside volatility, benchmark consistency) with qualitative assessment (fund management philosophy, investment process consistency, organizational stability).</p>
 </li>
@@ -925,6 +943,21 @@ function resetSIP() {
         });
     });
 </script>
+<script>
+	function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
 
+// Ensure menu closes after clicking a section link on mobile/tablet
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+});
+</script>
 </body>
 </html>
