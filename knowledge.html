@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Corner | 72Wealth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1A237E;
+            --red: #D32F2F;
+            --bg-light: #F6F8FB;
+            --text-main: #334155;
+            --white: #ffffff;
+        }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: var(--blue);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { opacity: 0.9; margin-top: 10px; }
+
+        /* --- BLOG GRID LAYOUT --- */
+
+/* --- Smaller Grid Adjustments --- */
+.container {
+    max-width: 1000px; /* Reduced from 1200px to make the overall area tighter */
+    margin: -40px auto 60px;
+    padding: 0 20px;
+}
+
+.blog-grid {
+    display: grid;
+    /* Changed minmax from 320px to 250px to allow more/smaller cards per row */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 20px; /* Reduced gap from 30px to 20px */
+}
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            height: 200px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--blue);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-card h2 {
+            font-size: 1.3rem;
+            color: var(--blue);
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            font-size: 0.95rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            font-weight: 600;
+            color: var(--blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Responsive Fix for small mobiles */
+        @media (max-width: 480px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.8rem; }
+        }
+
+    </style>
+</head>
+<body>
+<nav style="background: white; padding: 0 6.5%; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; height: 70px; font-family: 'Poppins', sans-serif;">
+    <div class="logo">
+        <img src="logowithoutbg.png" alt="72Wealth Logo" style="height: 52px; display: block;">
+    </div>
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="index.html" style="text-decoration: none; color: #1A237E; font-weight: 600; font-size: 0.9rem; transition: 0.3s;">Home</a>
+        
+    </div>
+</nav>
+<header style="background: #1A237E; color: white; padding: 60px 5%; text-align: center;">
+    <h1 style="margin: 0; font-size: 2.5rem; color: white;">Knowledge Corner</h1>
+    
+</header>
+<div class="container">
+    <div class="blog-grid">
+        
+        <a href="whatismf.html" class="blog-card">
+            <div class="card-image">💰</div>
+            <div class="card-content">
+                <span class="category">Basics</span>
+                <h2>What is a Mutual Fund?</h2>
+                <p>Discover how pooling money with other investors can give you access to diversified portfolios managed by experts.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
+
+        <a href="startInvesting.html" class="blog-card">
+            <div class="card-image">📈</div>
+            <div class="card-content">
+                <span class="category">Beginner's Guide</span>
+                <h2>How to start investing in Mutual Funds?</h2>
+                <p>A step-by-step roadmap for your first investment, from KYC requirements to choosing your first SIP.</p>
+                <span class="read-more">Read Article →</span>
+            </div>
+        </a>
+
+        <a href="budget26.pdf" target="_blank" class="blog-card">
+            <div class="card-image">🏛️</div>
+            <div class="card-content">
+                <span class="category">Market Updates</span>
+                <h2>Union Budget 2026-27 & Finance Bill, 2026</h2>
+                <p>Detailed analysis and key highlights of the 2026 Union Budget and its impact on your personal wealth and tax planning.</p>
+                <span class="read-more" style="color: var(--red);">View PDF Report →</span>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<footer style="background: #1A237E; color: white; text-align: center; padding: 36px 6.5%; font-family: 'Poppins', sans-serif;">
+    <p><strong>72Wealth</strong> – AMFI-registered Mutual Fund Distributor</p>
+    <p style="font-size: 0.8rem; margin-top: 12px; opacity: 0.8;">
+        &copy; 2026 72Wealth. All Rights Reserved. Mutual fund investments are subject to market risks.
+    </p>
+</footer>
+
+</body>
+</html>
