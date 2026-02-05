@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-     <title>72Wealth | Mutual Fund Distributor & Financial Advisor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>72Wealth | Mutual Fund Distributor & Financial Advisor</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
@@ -41,23 +41,24 @@
 }
 
 @media (max-width: 1024px) {
+    .menu-icon { display: block; }
+    
     .nav-links {
         position: fixed;
         top: var(--nav-height);
-        left: -100%; /* Hidden off-screen to the left */
+        left: -100%; /* Hidden by default */
         flex-direction: column;
         background: white;
         width: 100%;
         height: calc(100vh - var(--nav-height));
-        transition: 0.3s ease-in-out; /* Smooth sliding effect */
-        display: flex !important; /* Force it to flex layout when visible */
+        gap: 0;
+        transition: 0.3s;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        overflow-y: auto;
+        padding-bottom: 40px;
     }
 
-    /* When the JS adds the 'active' class, slide it in */
-    .nav-links.active {
-        left: 0 !important;
-    }
-}
+    .nav-links.active { left: 0; }
 
     .nav-links li {
         width: 100%;
@@ -145,7 +146,7 @@ img { max-width: 100%; height: auto; }
         }
 
         /* ---------- SECTIONS ---------- */
-        section { padding: var(--section-py) 6.5%;  }
+        section { padding: var(--section-py) 6.5%; scroll-margin-top: var(--nav-height); }
         h2 {
             color: var(--blue); text-align: center; font-size: clamp(1.6rem, 2.1vw, 2.1rem);
             margin-bottom: 26px; font-weight: 700;
@@ -189,7 +190,7 @@ img { max-width: 100%; height: auto; }
         /* ---------- HERO with horizontal image scroller ---------- */
         .hero {
             position: relative;
-            min-height: 100vh;                 /* shorter to reduce overall scroll */
+            min-height: 78vh;                 /* shorter to reduce overall scroll */
             display: grid; place-items: center;
             text-align: center; color: var(--white);
             padding: 44px 6.5%;
@@ -317,28 +318,6 @@ img { max-width: 100%; height: auto; }
         font-size: 0.9rem;
         font-weight: 600;
         color: var(--blue);
-    }
-}
-		/* Tablet and Mobile Styles */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        display: none; /* Hide the standard menu */
-    }
-    
-    .hero-text h1 {
-        font-size: 2rem; /* Shrink headers for mobile */
-    }
-
-    #home {
-        padding: 60px 20px; /* Add space for mobile headers */
-    }
-}
-
-/* Large Screens (Mac/Desktop) */
-@media screen and (min-width: 1200px) {
-    .content-wrapper {
-        width: 1140px;
-        margin: 0 auto;
     }
 }
     </style>
@@ -897,8 +876,6 @@ img { max-width: 100%; height: auto; }
 </footer>
 
 <script>
-	
-		
    function calcSIP() {
     let P = document.getElementById('monthly').value;
     let r = (document.getElementById('rate').value / 100) / 12;
@@ -948,16 +925,6 @@ function resetSIP() {
         });
     });
 </script>
-<script>
-function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
-}
-</script>
+
 </body>
 </html>
-
-
-
-
-
